@@ -33,7 +33,7 @@ portfolio/
 ## File Descriptions
 ### 1. `index.html`
 - Contains the main structure of the portfolio.
-- Sections: **Home, About, Projects, Services, My Numbers, Contact**.
+- Sections: **Home, About, Projects, Services, Achievements, Contact**.
 - Includes a **Dark Mode Toggle Button** with FontAwesome icons.
 - Uses Bootstrap for responsive navigation.
 
