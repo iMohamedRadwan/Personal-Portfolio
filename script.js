@@ -245,44 +245,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Counter Animation for My Numbers Section
-const counters = document.querySelectorAll('.counter');
-
-const startCounter = (counter) => {
-    const target = +counter.getAttribute('data-target');
-    let count = 0;
-    const increment = target / 100;
-
-    const updateCounter = () => {
-        count += increment;
-        counter.textContent = Math.floor(count);
-        if (count < target) {
-            requestAnimationFrame(updateCounter);
-        } else {
-            counter.textContent = target;
-        }
-    };
-
-    updateCounter();
-};
-
-// Intersection Observer to trigger counter animation
-const observer = new IntersectionObserver(
-    (entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                startCounter(entry.target);
-                observer.unobserve(entry.target);
-            }
-        });
-    },
-    { threshold: 0.6 }
-);
-
-counters.forEach((counter) => {
-    observer.observe(counter);
-});
-
 // Add animation for social links on scroll
 const socialLinks = document.querySelectorAll('.social-link');
 let delay = 0;
@@ -350,30 +312,20 @@ function handleImageLoading() {
 
 document.addEventListener('DOMContentLoaded', handleImageLoading);
 
-// Simple form handling
-document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contact-form');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Get form values
-            const name = this.querySelector('[name="from_name"]').value;
-            const email = this.querySelector('[name="reply_to"]').value;
-            const message = this.querySelector('[name="message"]').value;
-
-            // Basic validation
-            if (!name || !email || !message) {
-                alert('Please fill all fields');
-                return;
-            }
-
-            // Show success message
-            alert('Message sent successfully!');
-            
-            // Clear form
-            this.reset();
-        });
+// Form handling
+function handleSubmit(event) {
+    event.preventDefault();  // This prevents the form from submitting and updating URL
+    
+    const form = event.target;
+    const name = form.from_name.value;
+    const email = form.reply_to.value;
+    const message = form.message.value;
+    
+    if (!name || !email || !message) {
+        alert('Please fill all fields');
+        return;
     }
-}); 
+    
+    alert('Message sent successfully!');
+    form.reset();
+} 
