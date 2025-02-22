@@ -22,7 +22,7 @@ This is a responsive personal portfolio website built using HTML, CSS, JavaScrip
 
 ## Project Structure
 ```
-portfolio/
+Personal_Portfolio/
 │── index.html        # Main HTML file
 │── styles.css        # Custom styles and theme variables
 │── script.js         # JavaScript interactions and animations
