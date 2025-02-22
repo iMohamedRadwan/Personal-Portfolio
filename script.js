@@ -245,6 +245,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Counter Animation for My Numbers Section
+const counters = document.querySelectorAll('.counter');
+
+const startCounter = (counter) => {
+    const target = +counter.getAttribute('data-target');
+    let count = 0;
+    const increment = target / 100;
+
+    const updateCounter = () => {
+        count += increment;
+        counter.textContent = Math.floor(count);
+        if (count < target) {
+            requestAnimationFrame(updateCounter);
+        } else {
+            counter.textContent = target;
+        }
+    };
+
+    updateCounter();
+};
+
+// Intersection Observer to trigger counter animation
+const observer = new IntersectionObserver(
+    (entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                startCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    },
+    { threshold: 0.6 }
+);
+
+counters.forEach((counter) => {
+    observer.observe(counter);
+});
+
 // Add animation for social links on scroll
 const socialLinks = document.querySelectorAll('.social-link');
 let delay = 0;
