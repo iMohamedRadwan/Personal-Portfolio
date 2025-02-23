@@ -1579,10 +1579,10 @@ img {
 
 .numbers-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);  /* Force 4 columns */
-    gap: 2rem;  /* Match other sections */
-    margin: 3rem 5%;  /* Match other sections */
-    padding: 0;  /* Remove padding */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin: 3rem 5%;
+    padding: 0;
 }
 
 .number-card {
@@ -1716,4 +1716,45 @@ img {
 
 .success-dialog.error .dialog-content {
     border-color: #ef4444;
+}
+
+/* Numbers/Achievements Section */
+.numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin: 3rem 5%;
+    padding: 0;
+}
+
+/* Update media queries for better responsiveness */
+@media (max-width: 1200px) {
+    .numbers-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .numbers-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin: 2rem 3%;
+    }
+}
+
+@media (max-width: 576px) {
+    .numbers-grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1.5rem;
+        margin: 2rem 1rem;
+    }
+    
+    .number-card {
+        padding: 1.5rem;
+    }
+    
+    .number-card .number {
+        font-size: 2.5rem;
+    }
 } 
